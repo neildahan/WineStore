@@ -1,0 +1,12 @@
+.main{
+    text-align: center;
+    margin-top: 50px;
+    height: 78vh;
+}
+
+.order-form{
+    display: flex;
+    flex-direction: column;
+    margin: 0 100px;
+}
+

@@ -1,0 +1,9 @@
+.list-div{
+    text-align: -webkit-center;
+        position: fixed;
+        scroll-behavior: smooth;
+        overscroll-behavior-y: contain;
+        overflow: auto;
+        max-height: 82%;
+    
+}

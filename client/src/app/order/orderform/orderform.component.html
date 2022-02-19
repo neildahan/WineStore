@@ -1,0 +1,26 @@
+<div class="main">
+<h1>Order Form</h1>
+
+<form class="order-form">
+    <ng-template matStepLabel>Step One</ng-template>
+    <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <input formControlName="city" matInput placeholder="Enter Your City">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Street</mat-label>
+        <input formControlName="street" matInput placeholder="Enter your Street">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Shipping Date</mat-label>
+        <input type="date" formControlName="shippingDate" matInput placeholder="Please Pick a Shipping Date">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Credit Card</mat-label>
+        <input type="number" formControlName="creditCard" matInput placeholder="Please Enter your Credit Card">
+    </mat-form-field>
+    <div>
+        <button  mat-raised-button color="warn">Place Order</button>
+    </div>
+</form>
+</div>

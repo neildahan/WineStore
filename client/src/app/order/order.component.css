@@ -1,0 +1,18 @@
+.container {
+    display: grid;
+    grid-template-columns: 20vw;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "order-list order-form "
+  }
+
+  .order-form {
+    grid-area: order-form;
+    background-color: fff;
+  }
+
+
+  .order-list {
+    grid-area: order-list;
+    background-color: #F7F7F7;
+  }

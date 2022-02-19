@@ -1,0 +1,30 @@
+.container {
+    display: grid;
+    grid-template-columns: 20vw;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "sidebar homemain homemain homemain homeinfo"
+  }
+
+  .homemain {
+    grid-area: homemain;
+    background-color: fff;
+  }
+  .homeinfo {
+    grid-area: homeinfo;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .sidebar {
+    grid-area: sidebar;
+    background-color: #F7F7F7;
+  }
+
+  button.mat-warn{
+    background-color: #AA041C;
+}
+
+.shopping-buttons{
+    text-align: center;
+    margin-top: 50px;
+}

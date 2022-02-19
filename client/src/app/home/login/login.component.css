@@ -1,0 +1,64 @@
+
+  .login-main-div {
+    vertical-align: middle;
+    height: 80vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    place-content: center;
+  }
+  
+  .login-form {
+    display: contents;
+    padding-top: 30px;
+    /* width: 30vw; */
+    /* background-color: rgba(255, 255, 255, 0.685);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    font-size: 15px;
+    font-weight: initial;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  
+  .login-button {
+    margin: 10px 5px !important;
+    width: 100px;
+    font-size: 15px;
+  }
+  
+  .mat-form-field {
+    margin: 5px !important;
+    width: 200px;
+  }
+  
+  .logo-img {
+    width: 200px;
+  }
+  
+  
+  .login-text {
+    font-size: 12px !important;
+  }
+  
+  .pointer {
+    cursor: pointer;
+    color: #00708b;
+  }
+
+  button.mat-warn{
+      background-color: #AA041C;
+  }
+  button.mat-accent{
+      color: #AA041C;
+  }
+
+  .form-headline{
+    font-family: 'Dancing Script', cursive;
+  }

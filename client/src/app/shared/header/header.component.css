@@ -1,0 +1,29 @@
+
+.logo-img{
+    width: 120px;
+    height: 120px;
+}
+
+.mat-toolbar-single-row {
+    height: 15vh;
+    position: sticky;
+    position: -webkit-sticky; 
+    top: 0; 
+    z-index: 1000; 
+    justify-content: space-between;
+}
+
+.greeting-text{
+    font-size: 14px;
+    margin: 0;
+    margin-right: 20px;
+}
+
+.user-menu{
+    display: flex;
+    
+}
+
+button.mat-warn{
+    background-color: #AA041C;
+}

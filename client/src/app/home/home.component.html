@@ -1,0 +1,11 @@
+
+<div class="container">
+    <div class="sidebar">
+    <app-login *ngIf="!(user$ | async)" class="sidebar"></app-login>
+    <div *ngIf="(user$ | async)" class="shopping-buttons">
+        <button  routerLink="/store" mat-raised-button color="warn" class="login-button" type="submit">Start/Resume Shopping</button>
+    </div>
+</div>
+    <app-homemain class="homemain"></app-homemain>
+    <app-homeinfo class="homeinfo"></app-homeinfo>
+</div>

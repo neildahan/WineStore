@@ -1,0 +1,17 @@
+<!-- <div class="categories">
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab label="All">Content 1</mat-tab>
+    <mat-tab label="Whiskey">Content 2</mat-tab>
+    <mat-tab label="Beer">Content 3</mat-tab>
+    <mat-tab label="Vodka">Content 3</mat-tab>
+    <mat-tab label="Gin">Content 3</mat-tab>
+  </mat-tab-group>
+</div> -->
+
+<div class="container">
+    <div class="filter-item" *ngFor="let category of categories">
+        <button (click)="onCategoryChange(category)">
+            {{ category.name }} 
+        </button>
+    </div>
+</div>

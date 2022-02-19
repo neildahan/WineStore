@@ -1,0 +1,20 @@
+
+<div class="login-main-div">
+  <h1 class="form-headline">Login to your account</h1>
+<form (ngSubmit)="onSubmit(email.value,password.value)">
+  <p class="login-form" >
+    <mat-form-field  appearance="outline">
+      <mat-label>Email</mat-label>
+      <input required #email matInput placeholder="Enter Your Email">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input required type="password" #password matInput placeholder="Enter Your Password">
+    </mat-form-field>
+    </p>
+<div class="buttons">
+    <button mat-raised-button color="warn" class="login-button" type="submit">Login</button>
+    <button mat-stroked-button color="accent" class="login-button" type="submit" routerLink="/registration">Register</button></div>
+ 
+
+</form></div>

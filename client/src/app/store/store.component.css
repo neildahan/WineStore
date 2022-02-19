@@ -1,0 +1,21 @@
+.container {
+    display: grid;
+    grid-template-columns: 20vw;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "cart products "
+  }
+
+  .products {
+    grid-area: products;
+    background-color: fff;
+  }
+  .categories {
+    grid-area: products;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .cart {
+    grid-area: cart;
+    background-color: #F7F7F7;
+  }

@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="main-store">
+        <app-categories 
+        (categoryChange)="onCategorySelected($event)"
+        [categories]="categories$ | async" class="categories"></app-categories>
+        <app-products (productSelected)="addToCart($event)" [products]="products$ | async" class="products"></app-products>
+    </div>
+    <app-cart 
+    (removeItem)="removeFromCart($event)"
+    [totalPrice]="totalPrice$ | async"
+    [cart]="(cart$ | async)" class="cart"></app-cart>
+</div>

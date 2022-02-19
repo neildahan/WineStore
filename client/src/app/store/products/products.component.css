@@ -1,0 +1,35 @@
+.main{
+    text-align: center;
+    margin-top: 50px;
+    height: 78vh;
+}
+
+.product-grid{
+    display: flex;
+    margin: 20px;
+    flex-flow: wrap;
+}
+
+.example-card{
+    width: 230px;
+    margin: 10px;
+}
+
+.product-image{
+    width: 160px;
+}
+.mat-card-image {
+margin:0;
+display: flex;
+height: 200px;
+margin-left: 38px;
+}
+
+.add-button{
+    background-color: #AA041C;;
+    color:#fff
+}
+.add-button:hover{
+    background-color: #740011;;
+    color:#fff
+}

@@ -1,0 +1,4 @@
+.stepDiv{
+    display: flex;
+    flex-direction: column;
+}
