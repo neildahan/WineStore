@@ -9,12 +9,16 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import { FilterPipe } from './filter.pipe';
+import {RouterModule} from '@angular/router';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FilterPipe
   ],
+
   imports: [
     CommonModule,
     FormsModule,
@@ -25,9 +29,11 @@ import { FilterPipe } from './filter.pipe';
     MatButtonModule,
     MatCardModule,
     MatTabsModule,
-   
- 
+    RouterModule,
+    MatIconModule,
+  
   ],
+
   exports: [
     FormsModule,
     ReactiveFormsModule,

@@ -1,4 +1,4 @@
 export interface StoreStatics {
-    avalibleProducts: number;
+    availableProducts: number;
     submittedOrders: number;
 }

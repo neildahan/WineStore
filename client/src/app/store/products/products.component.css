@@ -1,18 +1,20 @@
 .main{
     text-align: center;
-    margin-top: 50px;
-    height: 78vh;
+    margin-top: 10px;
+    height: 75vh;
 }
 
 .product-grid{
+    flex-flow: wrap;
     display: flex;
-    margin: 20px;
+    margin: 40px 20px;
     flex-flow: wrap;
 }
 
 .example-card{
     width: 230px;
     margin: 10px;
+
 }
 
 .product-image{
@@ -27,9 +29,25 @@ margin-left: 38px;
 
 .add-button{
     background-color: #AA041C;;
-    color:#fff
+    color:#fff;
+    
 }
 .add-button:hover{
     background-color: #740011;;
     color:#fff
+}
+
+.mat-card>:first-child {
+    text-align: center;
+    height: 75px!important;
+}
+
+.mat-card>.mat-card-actions:last-child {
+    margin-bottom: 0px;
+}
+
+.edit-button{
+    margin-top: 15px!important;
+    background-color: #fff;;
+    color:#AA041C;
 }

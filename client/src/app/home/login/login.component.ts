@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 
@@ -9,10 +10,18 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class LoginComponent implements OnInit {
  
-
-  constructor(private authService : AuthenticationService) { }
+  infoMessage: string =''
+  constructor(private authService : AuthenticationService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.route.queryParams
+      .subscribe(params => {
+        if(params['registered'] !== undefined && params['registered'] === 'true') {
+            this.infoMessage = 'Registration Successful! Please Login!';
+        }
+      });
+
   }
 
 onSubmit(email: string, password: string){

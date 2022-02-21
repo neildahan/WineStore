@@ -45,7 +45,7 @@ router.post('/register', async (req, res) => {
         }
 
         await usersService.register(firstName, lastName, email, identification, password, city, street);
-
+    
         res.status(201).send(new Response("User added Successfully", true));
 
     } catch (err) {

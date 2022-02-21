@@ -2,3 +2,8 @@
     display: flex;
     flex-direction: column;
 }
+
+.registration-form{
+    text-align: center;
+    margin: 20px 15vw;
+}

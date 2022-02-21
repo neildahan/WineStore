@@ -4,18 +4,16 @@
         <!-- <input formControlName="id" matInput placeholder="Enter Your ID"> -->
         <input matInput [(ngModel)]="searchTerm" (keyup)="search($event)"  type="search" placeholder="search here" class="search-input">
     </mat-form-field>
+    <div class="cart-div"></div>
     <h1>Shopping Cart</h1>
 
-
-
-
-    <ng-container *ngIf="cart?.products?.length">
+    <ng-container *ngIf="cart?.products?.length != 0">
         <mat-card *ngFor="let item of cart?.products" class="cart-item">
-            <img class="cart-item-img" [src]="item.product?.imgUrl"
-            alt="Photo of a Shiba Inu">
+            <img class="cart-item-img" src={{item?.imgUrl}}
+            alt="123">
             <mat-card-header>
-                <mat-card-title class="cart-item-header">{{item.product?.name}}</mat-card-title>
-                <mat-card-subtitle class="cart-item-text">{{item?.product?.categoryId}}</mat-card-subtitle>
+                <mat-card-title class="cart-item-header">{{item?.name}}</mat-card-title>
+                <mat-card-subtitle class="cart-item-text">{{item?.categoryId}}</mat-card-subtitle>
                 <mat-card-subtitle class="cart-item-text">{{item.quantity}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-actions>
@@ -27,9 +25,11 @@
         <h2>Total Price: {{ totalPrice | currency : 'USD' }}</h2>
     </div>
     <div class="buttons">
-        <button (click)="removeAllCart()" mat-raised-button color="accent" class="login-button" >Clear Cart</button>
+        <button (click)="removeAllFromCart(1)" mat-raised-button color="accent" class="login-button" >Clear Cart</button>
         <button routerLink="/order" mat-raised-button color="warn" class="login-button" type="submit">Place Order</button>
     </div>
+
+
     </ng-container>
 
     <ng-container *ngIf="!cart?.products?.length">

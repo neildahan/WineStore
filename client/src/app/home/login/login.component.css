@@ -62,3 +62,9 @@
   .form-headline{
     font-family: 'Dancing Script', cursive;
   }
+
+  .info-message{
+    text-align: center;
+    font-size: 12px;
+    color: mediumseagreen;
+  }

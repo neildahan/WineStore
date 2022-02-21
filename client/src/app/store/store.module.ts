@@ -6,8 +6,7 @@ import { CartComponent } from './cart/cart.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
 import { StoreRoutingModule } from './store-routing.moudle';
-
-
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -21,7 +20,7 @@ import { StoreRoutingModule } from './store-routing.moudle';
     CommonModule,
     StoreRoutingModule,
     SharedModule,
-
+    MatIconModule
   ]
 })
 export class StoreModule { }

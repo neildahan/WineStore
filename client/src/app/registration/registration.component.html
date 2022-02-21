@@ -1,10 +1,12 @@
+<div class="registration-form">
+    <h2>Register a New Account</h2>
 <mat-stepper labelPosition="bottom" #stepper>
     <mat-step [stepControl]="firstFormGroup">
         <form class="stepDiv" [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Step One</ng-template>
             <mat-form-field appearance="outline">
                 <mat-label>ID</mat-label>
-                <input formControlName="id" matInput placeholder="Enter Your ID">
+                <input formControlName="identification" matInput placeholder="Enter Your ID">
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
@@ -28,19 +30,19 @@
             <ng-template matStepLabel>Step Two</ng-template>
             <mat-form-field appearance="outline">
                 <mat-label>Name</mat-label>
-                <input required #id matInput placeholder="Enter Your First Name">
+                <input  formControlName="firstName"  matInput placeholder="Enter Your First Name">
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Last Name</mat-label>
-                <input required #email matInput placeholder="Enter Your Last Name">
+                <input formControlName="lastName" matInput placeholder="Enter Your Last Name">
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>City</mat-label>
-                <input required #password matInput placeholder="Enter Your City">
+                <input formControlName="city" matInput placeholder="Enter Your City">
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Street</mat-label>
-                <input required #confirmPassword matInput placeholder="Enter Your Street">
+                <input formControlName="street" matInput placeholder="Enter Your Street">
             </mat-form-field>
             <div>
                 <button type="button" matStepperPrevious>Back</button>
@@ -48,4 +50,4 @@
             </div>
         </form>
     </mat-step>
-</mat-stepper>
+</mat-stepper></div>
