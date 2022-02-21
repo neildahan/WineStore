@@ -9,9 +9,9 @@
 
 
 
-    <ng-container *ngIf="cart?.products?.length != 0">
+    <ng-container *ngIf="cart?.products?.length">
         <mat-card *ngFor="let item of cart?.products" class="cart-item">
-            <img class="cart-item-img" src={{item.product?.imgUrl}}
+            <img class="cart-item-img" [src]="item.product?.imgUrl"
             alt="Photo of a Shiba Inu">
             <mat-card-header>
                 <mat-card-title class="cart-item-header">{{item.product?.name}}</mat-card-title>
@@ -32,7 +32,7 @@
     </div>
     </ng-container>
 
-    <ng-container *ngIf="cart?.products?.length == 0">
+    <ng-container *ngIf="!cart?.products?.length">
 
         <img class="empty" src="https://i.ibb.co/rb4qqZH/Online-Groceries-rafiki.png" alt="">
 

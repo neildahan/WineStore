@@ -14,6 +14,9 @@ export class AuthenticationService {
   private userChange = new BehaviorSubject<User | null>(null);
   user$ = this.userChange.asObservable();
 
+  get user() {
+    return this.userChange.value;
+  }
   constructor(private http:HttpClient) { }
 
   doLogin(credentials:Credentials): Observable<User> {
@@ -35,5 +38,7 @@ getloggedInUser():Observable<User | undefined>{
   //   map((res) => res.data)
   // )
 }
+
+
   
 }
