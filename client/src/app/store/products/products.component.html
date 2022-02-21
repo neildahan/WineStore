@@ -1,31 +1,27 @@
 
-{{ 'PRODUCTS @@@@@@@' + products}}
 <div class="main">
 
 
-    <!-- <select [(ngModel)]="selectedCategoryId" (ngModelChange)="onCategorySelected($event)">
-    <option *ngFor="let c of(products$ | async)" [value]="c.categoryId">
-    {{c.categoryId}}
-
-</option>
-
-</select> -->
-<!-- <h2>the selected {{selectedCategoryId}}</h2> -->
-
     <div class="product-grid">
-        <div class="statics" 
-            *ngFor="let product of products | filter : searchKey: 'name'; let i = index">
+        <div class="products" 
+            *ngFor="let product of products | filter : searchKey: 'name'; let i = index;">
             <mat-card class="example-card">
                 <mat-card-header>
                   <div class="example-header-image"></div>
                   <mat-card-title>{{product.name}}</mat-card-title>
-                  <mat-card-subtitle>{{product.categoryId}}</mat-card-subtitle>
                 </mat-card-header>
-                <img class="product-image" mat-card-image src={{product.imgUrl}} alt="Photo of a Shiba Inu">
+                <img class="product-image" mat-card-image src={{product.imgUrl}} alt="">
                 <h2>${{product.price}}.00</h2>
                 <mat-card-actions>
                   <button (click)="onProductSelected(product)" mat-button class = "add-button">Add to Cart</button>
-                  <!-- <button mat-button>SHARE</button> -->
+                  <div class="user-menu" *ngIf="(user$ | async) as user">
+                 
+                  <button class="edit-button" *ngIf="user.role === 'user'" mat-button>
+                    <mat-icon>edit</mat-icon>
+                    Edit Product
+                </button>
+                
+                </div>
                 </mat-card-actions>
               </mat-card>
 

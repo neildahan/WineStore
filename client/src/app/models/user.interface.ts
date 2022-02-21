@@ -7,5 +7,5 @@ export interface User {
     password: string,
     city: string,
     street: string,
-    role: string
+    role: string 
 }

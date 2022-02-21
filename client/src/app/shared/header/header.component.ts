@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,14 +12,15 @@ export class HeaderComponent implements OnInit {
   user$ = this.authService.user$;
 
 
-  constructor(public authService: AuthenticationService) {
+  constructor(public authService: AuthenticationService, private router: Router) {
 
   }
 
 
   logout(){
-    sessionStorage.clear();
-  // this.router.navigateByUrl('/');
+    sessionStorage.removeItem('user');
+    this.authService.setUser(null)
+    // this.router.navigateByUrl('/');
   }
 
 

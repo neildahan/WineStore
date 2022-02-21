@@ -11,7 +11,6 @@ router.get('/active/:userId', async (req, res) => {
     try {
         const user = await usersService.getUser(req.params.userId);
         const activeCart = await cartsService.getActiveCart(user[0].id);
-        console.log(activeCart)
         res.send(new Response ("cart", true, activeCart));
     } catch (err) {
         console.log(err);
@@ -60,6 +59,19 @@ router.delete('/:cartItemId', async (req, res) => {
         await cartsService.deleteCartItem(cartItemId);
 
         res.status(201).send(new Response("Cart Item deleted Successfully", true));
+
+    } catch (err) {
+        res.status(500).send(err);
+        console.log(err);
+    }
+});
+
+router.delete('/clear/:cartId', async (req, res) => {
+    try {
+        const { cartId } = req.params;
+        await cartsService.deleteCartItems(cartId);
+
+        res.status(201).send(new Response("Cart Items deleted Successfully", true));
 
     } catch (err) {
         res.status(500).send(err);

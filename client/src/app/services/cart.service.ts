@@ -16,6 +16,7 @@ export class CartService {
 
 
   private cartChange = new BehaviorSubject<Cart | null>(null)
+  public search = new BehaviorSubject<string>("")
   cart$ = this.cartChange.asObservable()
 
   constructor(private http: HttpClient, private productService: ProductService) { }
@@ -35,6 +36,7 @@ export class CartService {
   setCart(cart: Cart) {
     this.cartChange.next(cart);
   }
+
 
 
   addToCart(product: Product) {
@@ -60,6 +62,12 @@ export class CartService {
           this.setCart(this.cartChange.value);
         }
       })
+    )
+  }
+
+  removeAllFromCart(cartId: number) {
+    return this.http.delete(environment.baseUrl + "/carts/clear/" + cartId).pipe(
+      map(res => res)
     )
   }
 

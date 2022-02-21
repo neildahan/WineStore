@@ -1,6 +1,7 @@
 
 <div class="login-main-div">
   <h1 class="form-headline">Login to your account</h1>
+  <h3 class="info-message" *ngIf="infoMessage.length > 0">{{ infoMessage }}</h3>
 <form (ngSubmit)="onSubmit(email.value,password.value)">
   <p class="login-form" >
     <mat-form-field  appearance="outline">

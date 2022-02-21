@@ -3,9 +3,10 @@
         <app-categories 
         (categoryChange)="onCategorySelected($event)"
         [categories]="categories$ | async" class="categories"></app-categories>
-        <app-products (productSelected)="addToCart($event)" [products]="products$ | async" class="products"></app-products>
+        <app-products [user]="(user$ | async)" (productSelected)="addToCart($event)" [products]="products$ | async"  [categories]="categories$ | async" class="products"></app-products>
     </div>
     <app-cart 
+    [user]="(user$ | async)"
     (removeItem)="removeFromCart($event)"
     [totalPrice]="totalPrice$ | async"
     [cart]="(cart$ | async)" class="cart"></app-cart>

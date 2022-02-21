@@ -9,7 +9,43 @@ img{
 
 .container{
     display: flex;
+    flex-direction: column;
 }
 .filter-item{
     text-align: center;
+}
+
+.filter-button{
+    margin: 5px;
+    color: #AA041C;
+    background-color: white;
+}
+.filter-button-active{
+    margin: 5px;
+    color: #fff;
+    background-color: #AA041C;
+}
+
+.container{
+    margin: 20px
+}
+
+.filters{
+    display: flex;
+}
+
+.category-title{
+    text-align: center;
+    font-size: 40px;
+    margin-top: 80px;
+    font-family: 'Dancing Script', cursive;
+}
+
+.filters {
+    padding: 20px ;
+    position: fixed;
+    top: 100px;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
 }

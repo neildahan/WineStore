@@ -3,6 +3,7 @@ import { map, Observable, switchMap, take } from 'rxjs';
 import { CartItem } from '../models/cart-item.interface';
 import { Category } from '../models/category-interface';
 import { Product } from '../models/product-interface';
+import { AuthenticationService } from '../services/authentication.service';
 import { CartService } from '../services/cart.service';
 import { CategoriesService } from '../services/categories.service';
 import { ProductService } from '../services/product.service';
@@ -12,18 +13,19 @@ import { ProductService } from '../services/product.service';
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.css']
 })
-export class StoreComponent implements OnInit, OnDestroy {
+export class StoreComponent implements OnInit {
 
   products$ = this.productService.products$
   categories$ = this.categoriesService.categories$;
   cart$ = this.cartService.cart$;
   totalPrice$?: Observable<number | undefined>;
+  user$  = this.authService.user$ ;
 
-  constructor(private categoriesService: CategoriesService, private productService: ProductService, private cartService: CartService) { }
+  constructor(private categoriesService: CategoriesService, private productService: ProductService, private cartService: CartService,private authService:AuthenticationService) { }
 
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
+  // ngOnDestroy(): void {
+  //   throw new Error('Method not implemented.');
+  // }
 
   ngOnInit(): void {
     this.categoriesService.getCategories().pipe(take(1)).subscribe();

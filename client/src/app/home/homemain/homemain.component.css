@@ -2,7 +2,7 @@
     font-family: 'Dancing Script', cursive;
     font-size: 65px;
     color: #AA041C;
-    z-index: 999999999;
+    margin: 25px 0px;
 }
 
 .main{
@@ -15,4 +15,8 @@
     height: 78vh;
 }
 
+
+.main-img{
+    width: 550px;
+}
 

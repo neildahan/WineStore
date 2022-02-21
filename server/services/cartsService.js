@@ -8,7 +8,7 @@ async function getActiveCart(userId) {
 
 async function getCartItems(cartId) {
     return await myQuery(`
-    SELECT cartItem.id,product.name,product.id as "productId",product.price,cartItem.quantity,cartItem.totalPrice
+    SELECT cartItem.id,product.name,product.id as "productId",product.imgUrl,product.price,cartItem.quantity,cartItem.totalPrice
     FROM cartItem
     INNER JOIN product
     ON cartItem.productId = product.id
@@ -38,5 +38,11 @@ async function deleteCartItem( cartItemId ) {
     WHERE id = "${cartItemId}"
     `);
 }
+async function deleteCartItems( cartId ) {
+    return await myQuery(`
+    DELETE FROM cartItem
+    WHERE cartId = "${cartId}"
+    `);
+}
 
-module.exports.cartsService = { getActiveCart, getCartItems, addCartItem, updateCartItemQuantity, deleteCartItem };
+module.exports.cartsService = { getActiveCart, getCartItems, addCartItem, updateCartItemQuantity, deleteCartItem,deleteCartItems };

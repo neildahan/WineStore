@@ -5,7 +5,7 @@ const { Response } = require('../helpers/response');
 router.get('/', async (req, res) => {
     try {
         const ordersNum = await myQuery('SELECT COUNT(*) AS submittedOrders FROM orders;');
-        const productsNum = await myQuery('SELECT COUNT(*) AS avalibleProducts FROM product;');
+        const productsNum = await myQuery('SELECT COUNT(*) AS availableProducts FROM product;');
         console.log(productsNum)
 
         if (!ordersNum || !productsNum) {
