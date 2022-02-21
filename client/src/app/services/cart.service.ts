@@ -45,10 +45,10 @@ export class CartService {
     console.log(cartItem)
     return this.http.post(environment.baseUrl + "/carts/addItem", cartItem).pipe(
       tap(res => {
-        if (this.cartChange.value) {
-          this.cartChange.value.products.push(cartItem)
-          this.setCart(this.cartChange.value)
-        }
+        // if (this.cartChange.value) {
+          // this.cartChange.value.products.push(cartItem)
+          // this.setCart(this.cartChange.value)
+        // }
       })
     )
   }

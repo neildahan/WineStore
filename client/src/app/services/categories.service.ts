@@ -15,6 +15,13 @@ export class CategoriesService {
   private categoriesChange: BehaviorSubject<Category[] | null> = new BehaviorSubject<Category[] | null>([])
   categories$ = this.categoriesChange.asObservable();
 
+  get categories() {
+    return this.categoriesChange.value;
+  }
+
+  get currentCategory() {
+    return this.currentCategoryChange.value;
+  }
 
   constructor(private http: HttpClient) { }
 
