@@ -1,0 +1,28 @@
+<div class="product-form">
+    <h2 class="title">Product Form</h2>
+    
+    <form (ngSubmit)="onSubmit()" [formGroup]="productForm" class="order-form">
+        <ng-template matStepLabel>Step One</ng-template>
+        <mat-form-field appearance="outline">
+            <mat-label>Product Name</mat-label>
+            <input formControlName="name" matInput placeholder="Enter Product Name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <input formControlName="categoryId" matInput placeholder="Enter Category">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Product Price</mat-label>
+            <input type="number" formControlName="price" matInput placeholder="Enter Product Price">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Image Url</mat-label>
+            <input  formControlName="imgUrl" matInput placeholder="Enter Image Url">
+        </mat-form-field>
+        <div>
+            <button  [disabled]="productForm.invalid" type="submit" mat-raised-button color="warn">Add Product</button>
+        </div>
+    </form>
+    </div>
+
+

@@ -1,0 +1,14 @@
+.product-form{
+    margin-left: 20px;
+    margin-top: 10px;
+    position: fixed;
+    scroll-behavior: smooth;
+    overscroll-behavior-y: contain;
+    overflow: auto;
+    max-height: 82%;
+}
+
+.order-form{
+    display: flex;
+    flex-direction: column;
+}
