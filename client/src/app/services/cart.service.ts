@@ -18,7 +18,13 @@ export class CartService {
   private cartChange = new BehaviorSubject<Cart | null>(null)
   public search = new BehaviorSubject<string>("")
   cart$ = this.cartChange.asObservable()
+  totalPrice$ = this.cart$.pipe(
+    map((cart) => cart?.products.map((product) => product.totalPrice).reduce((a: number, b: number) => a + b, 0))
+  );
 
+  get cart() {
+    return this.cartChange.value
+  }
   constructor(private http: HttpClient, private productService: ProductService) { }
 
 
@@ -72,53 +78,6 @@ export class CartService {
   }
 
 
-  // addToCart(product: any) {
-  //   //   return this.http.post<BaseResponse<any[]>>(environment.baseUrl + "/carts/additem/",
-  //   //   {
-  //   //     "productId" : product.id,
-  //   //     "quantity" : product.quantity,
-  //   //     "cartId" : 1,
-  //   //     "productPrice" : product.price
-  //   // }
-  //   // )
-
-
-  //   // for(let i in this.cartItemList){
-  //   //   if(this.cartItemList[i].id === product.id){
-  //   //     this.cartItemList[i].quantity++
-
-  //   //   }
-  //   //   else{
-  //   this.cartItemList.push(product)
-  //   this.productList.next(this.cartItemList)
-  //   this.getTotalPrice()
-  //   console.log(this.cartItemList)
-  // }
-  // //   }
-  // // }
-
-  // // }
-
-  // getTotalPrice(): number {
-  //   let grandTotal = 0;
-  //   this.cartItemList.map((a: any) => {
-  //     grandTotal += a.total;
-  //   })
-  //   return grandTotal;
-  // }
-
-  // removeCartItem(product: any) {
-  //   this.cartItemList.map((a: any, index: any) => {
-  //     if (product.id === a.id) {
-  //       this.cartItemList.splice(index, 1)
-  //     }
-  //   })
-  // }
-
-  // removeAllCart() {
-  //   this.cartItemList = []
-  //   this.productList.next(this.cartItemList)
-  // }
 
 
 }

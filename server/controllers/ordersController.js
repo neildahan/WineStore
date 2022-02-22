@@ -4,7 +4,7 @@ const { sessionService } = require('./../services/sessionService');
 const { Response } = require('../helpers/response');
 const { authenticated } = require('../helpers/authenticated');
 
-router.use(authenticated);
+// router.use(authenticated);
 
 router.get('/', async (req, res) => {
     try {
@@ -45,13 +45,16 @@ router.post('/availabledates', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const {  cartId, totalPrice, city, street, deliveryDate, orderDate, creditCard } = req.body;
-        const user = sessionService.getUser(req)
-        if (!totalPrice || !city || !street || !deliveryDate || !orderDate || !creditCard || !cartId) {
+        const {  userId, cartId, totalPrice, city, street, deliveryDate, creditCard } = req.body;
+        // const user = sessionService.getUser(req)
+        console.log(req.body)
+        if (!totalPrice || !city || !street || !deliveryDate || !creditCard || !cartId) {
             return res.status(400).send({ err: true, msg: "Please Fill in all Fields" });
         }
 
-        await ordersService.createNewOrder(user.id, cartId, totalPrice, city, street, deliveryDate, orderDate, creditCard);
+
+        const orderDate = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`;
+        await ordersService.createNewOrder(userId, cartId, totalPrice, city, street, deliveryDate, orderDate, creditCard);
 
         res.status(201).send(new Response("Order added Successfully", true));
 

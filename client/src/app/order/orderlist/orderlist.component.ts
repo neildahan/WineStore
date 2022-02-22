@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Cart } from 'src/app/models/cart-interface';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -9,14 +10,13 @@ import { CartService } from 'src/app/services/cart.service';
 export class OrderlistComponent implements OnInit {
 
 
-  cartItemList?:any[]// = this.cartService.cartItemList
+  @Input() cart?: Cart | null;
+  @Input() totalPrice?: number | null;
 
-  constructor(private cartService:CartService) { }
+  constructor() { }
 
   ngOnInit(): void {
 
-    console.log
-    // (this.cartService.cartItemList)
   }
 
 }

@@ -18,7 +18,7 @@ export class StoreComponent implements OnInit {
   products$ = this.productService.products$
   categories$ = this.categoriesService.categories$;
   cart$ = this.cartService.cart$;
-  totalPrice$?: Observable<number | undefined>;
+  totalPrice$ = this.cartService.totalPrice$;
   user$  = this.authService.user$ ;
 
   constructor(private categoriesService: CategoriesService, private productService: ProductService, private cartService: CartService,private authService:AuthenticationService) { }
@@ -38,9 +38,7 @@ export class StoreComponent implements OnInit {
       )
       .subscribe();
 
-    this.totalPrice$ = this.cart$.pipe(
-      map((cart) => cart?.products.map((product) => product.totalPrice).reduce((a: number, b: number) => a + b, 0))
-    );
+
   }
 
   onCategorySelected(category: Category) {

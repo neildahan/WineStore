@@ -6,17 +6,17 @@
     </mat-form-field>
   
     <h1>order List</h1>
-   <ul *ngFor="let item of cartItemList">
+   <ul *ngFor="let item of cart?.products">
        <li>Item Name:{{item.name}}</li>
        <li>Quantity:{{item.quantity}}</li>
-       <li>Price: ${{item.price}}</li>
+       <li>Price: {{item.price | currency}}</li>
        <!-- <li><img src={{item.imgUrl}} alt=""></li> -->
 
    </ul>
         
     
     <div class="total-price">
-        <h2>Total Price:</h2>
+        <h2>Total Price: {{ totalPrice | currency }}</h2>
     </div>
     <div class="buttons">
         <!-- <button (click)="removeAllCart()" mat-raised-button color="accent" class="login-button" >Clear Cart</button> -->
