@@ -12,6 +12,7 @@ export class CartItem {
     name?: string;
     imgUrl?: string;
     categoryId?: number
+    price: number
 
     constructor(product: Product, cartId: number, quantity: number) {
         this.name = product.name;
@@ -19,6 +20,7 @@ export class CartItem {
         this.cartId = cartId;
         this.quantity = quantity;
         this.imgUrl = product.imgUrl;
+        this.price = product.price;
         this.totalPrice = product.price * this.quantity;
     }
 }

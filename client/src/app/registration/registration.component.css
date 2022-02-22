@@ -7,3 +7,19 @@
     text-align: center;
     margin: 20px 15vw;
 }
+
+.title{
+    text-align: center;
+    font-size: 40px;
+    margin: 40px 0;
+    font-family: 'Dancing Script', cursive;
+}
+
+button.mat-warn{
+    background-color: #AA041C;
+    margin-left: 10px;
+}
+button.mat-accent{
+    color: #AA041C;
+    margin-right: 10px;
+}

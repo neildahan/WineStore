@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CartItem } from 'src/app/models/cart-item.interface';
 import { CartService } from 'src/app/services/cart.service';
+
+
 
 @Component({
   selector: 'app-orderlist',
@@ -8,15 +11,19 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class OrderlistComponent implements OnInit {
 
+  searchQuery: string = '';
+  @Input() cartItems?: CartItem[] | any ;
+  @Input() totalPrice?: number | null;
 
-  cartItemList?:any[]// = this.cartService.cartItemList
 
-  constructor(private cartService:CartService) { }
+
+
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
 
-    console.log
-    // (this.cartService.cartItemList)
+    console.log(this.cartService.cart$.subscribe(c => console.log(c?.products)))
   }
+
 
 }

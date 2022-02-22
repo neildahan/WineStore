@@ -1,0 +1,17 @@
+.thankyou-img{
+width: 500px;
+}
+
+.thankyou-container{
+
+width: 100vw;
+text-align: center;
+}
+
+button.mat-warn{
+    background-color: #AA041C;
+    margin-left: 20px;
+}
+button.mat-accent{
+    color: #AA041C;
+}

@@ -4,6 +4,22 @@
         scroll-behavior: smooth;
         overscroll-behavior-y: contain;
         overflow: auto;
-        max-height: 82%;
-    
+        max-height: 82%;   
 }
+
+button.mat-warn{
+    background-color: #AA041C;
+}
+button.mat-accent{
+    color: #AA041C;
+}
+
+ul{
+    text-align: left;
+    margin: 30px 0;
+}
+
+li{
+margin-top: 10px;
+}
+

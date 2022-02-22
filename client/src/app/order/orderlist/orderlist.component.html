@@ -2,21 +2,21 @@
     <mat-form-field appearance="outline">
         <mat-label>Search</mat-label>
         <!-- <input formControlName="id" matInput placeholder="Enter Your ID"> -->
-        <input matInput   type="search" placeholder="search here" class="search-input">
+        <input matInput type="search" placeholder="search here" class="search-input">
     </mat-form-field>
   
-    <h1>order List</h1>
-   <ul *ngFor="let item of cartItemList">
+    <h1>Order List</h1>
+   <ul *ngFor="let item of cartItems.products">
        <li>Item Name:{{item.name}}</li>
        <li>Quantity:{{item.quantity}}</li>
-       <li>Price: ${{item.price}}</li>
+       <li>Price: ${{item.totalPrice}}</li>
        <!-- <li><img src={{item.imgUrl}} alt=""></li> -->
 
    </ul>
         
     
     <div class="total-price">
-        <h2>Total Price:</h2>
+        <h2>Total Price : {{totalPrice | currency : 'USD' }}</h2>
     </div>
     <div class="buttons">
         <!-- <button (click)="removeAllCart()" mat-raised-button color="accent" class="login-button" >Clear Cart</button> -->

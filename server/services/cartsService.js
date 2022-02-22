@@ -24,8 +24,8 @@ async function addCartItem( productId, quantity, cartId, productPrice ) {
     `);
 }
 
-async function updateCartItemQuantity( quantity, cartItemId, productPrice ) {
-    let totalPrice = productPrice * quantity;
+async function updateCartItemQuantity( quantity, cartItemId, totalPrice ) {
+    // let totalPrice = productPrice * quantity;
     return await myQuery(`
     UPDATE cartItem SET quantity = "${quantity}", totalPrice = "${totalPrice}"
     WHERE id = "${cartItemId}"

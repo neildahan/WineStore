@@ -2,32 +2,46 @@
     <mat-form-field appearance="outline">
         <mat-label>Search</mat-label>
         <!-- <input formControlName="id" matInput placeholder="Enter Your ID"> -->
-        <input matInput [(ngModel)]="searchTerm" (keyup)="search($event)"  type="search" placeholder="search here" class="search-input">
+        <input matInput [(ngModel)]="searchTerm" (keyup)="search($event)" type="search" placeholder="search here"
+            class="search-input">
     </mat-form-field>
     <div class="cart-div"></div>
     <h1>Shopping Cart</h1>
 
     <ng-container *ngIf="cart?.products?.length != 0">
         <mat-card *ngFor="let item of cart?.products" class="cart-item">
-            <img class="cart-item-img" src={{item?.imgUrl}}
-            alt="123">
+            <img class="cart-item-img" src={{item?.imgUrl}} alt="123">
             <mat-card-header>
                 <mat-card-title class="cart-item-header">{{item?.name}}</mat-card-title>
                 <mat-card-subtitle class="cart-item-text">{{item?.categoryId}}</mat-card-subtitle>
-                <mat-card-subtitle class="cart-item-text">{{item.quantity}}</mat-card-subtitle>
+                <!-- <mat-card-subtitle class="cart-item-text">{{item.quantity}}</mat-card-subtitle> -->
+                <div class="quantity">
+                    <h6>Qty:</h6>
+                    <button class="qty-button" color="warn" (click)="inc(item)">+</button>
+                    <h4>{{item.quantity}}</h4>
+                    <!-- <input class="quantity-input" value="{{item.quantity}}"> -->
+                    <button class="qty-button" (click)="dec(item)">-</button>
+                </div>
             </mat-card-header>
+     
             <mat-card-actions>
-                <button (click)="onRemoveItem(item)" >X</button>
+       <button (click)="onRemoveItem(item)" class="remove-button" >
+                <mat-icon>delete</mat-icon>
+            </button>
+
+                <!-- <button (click)="onRemoveItem(item)">X</button> -->
             </mat-card-actions>
         </mat-card>
-    
-    <div class="total-price">
-        <h2>Total Price: {{ totalPrice | currency : 'USD' }}</h2>
-    </div>
-    <div class="buttons">
-        <button (click)="removeAllFromCart(1)" mat-raised-button color="accent" class="login-button" >Clear Cart</button>
-        <button routerLink="/order" mat-raised-button color="warn" class="login-button" type="submit">Place Order</button>
-    </div>
+
+        <div class="total-price">
+            <h2>Total Price: {{ totalPrice | currency : 'USD' }}</h2>
+        </div>
+        <div class="buttons">
+            <button (click)="removeAllFromCart(1)" mat-raised-button color="accent" class="login-button">Clear
+                Cart</button>
+            <button routerLink="/order" mat-raised-button color="warn" class="login-button" type="submit">Place
+                Order</button>
+        </div>
 
 
     </ng-container>

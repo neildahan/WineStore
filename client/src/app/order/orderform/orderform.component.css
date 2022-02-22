@@ -10,3 +10,16 @@
     margin: 0 100px;
 }
 
+button.mat-warn{
+    background-color: #AA041C;
+}
+button.mat-accent{
+    color: #AA041C;
+}
+
+.title{
+    text-align: center;
+    font-size: 40px;
+    margin: 40px 0;
+    font-family: 'Dancing Script', cursive;
+}

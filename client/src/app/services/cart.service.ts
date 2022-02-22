@@ -18,6 +18,8 @@ export class CartService {
   private cartChange = new BehaviorSubject<Cart | null>(null)
   public search = new BehaviorSubject<string>("")
   cart$ = this.cartChange.asObservable()
+cartItems :any[] = []
+
 
   constructor(private http: HttpClient, private productService: ProductService) { }
 
@@ -40,19 +42,51 @@ export class CartService {
 
 
   addToCart(product: Product) {
-    console.log(this.cartChange.value)
+    console.log(this.cartItems)
+    console.log(this.cartChange.value?.products)
     const cartItem = new CartItem(product, this.cartChange.value?.id || 55, 1);
     console.log(cartItem)
     return this.http.post(environment.baseUrl + "/carts/addItem", cartItem).pipe(
-      tap(res => {
-        // if (this.cartChange.value) {
-          // this.cartChange.value.products.push(cartItem)
-          // this.setCart(this.cartChange.value)
-        // }
-      })
+      tap(res => res)
     )
   }
 
+
+  // addToCart(product: Product) {
+// this.cart$.subscribe(
+//   cItems => {
+//     this.cartItems.push(cItems?.products)
+//     console.log(this.cartItems)
+//   })
+//   const cartItem = new CartItem(product, this.cartChange.value?.id || 55, 1);
+//   return this.http.post(environment.baseUrl + "/carts/addItem", cartItem).pipe(
+//     tap(res => res)
+//   )
+// }
+//     console.log(this.cartItems)
+//         for ( let i in this.cartItems){
+//        if(this.cartItems?[i].id == product.id){
+//         this.updateCartItemQty(this.cartItems])
+//        }
+//       else{
+//     const cartItem = new CartItem(product, this.cartChange.value?.id || 55, 1);
+//     return this.http.post(environment.baseUrl + "/carts/addItem", cartItem).pipe(
+//       tap(res => res)
+//       )
+//   }
+// return console.log("")
+// }
+// }
+
+
+
+
+  updateCartItemQty(cartItem: CartItem){
+    let body = {quantity:cartItem.quantity , totalPrice:cartItem.totalPrice, cartItemId:cartItem.id}
+    return this.http.put<any>(environment.baseUrl + "/carts/quantity/",body).pipe(
+      map(res => res)
+    ).subscribe()
+  }
 
   removeFromCart(product: CartItem) {
     return this.http.delete(environment.baseUrl + "/carts/" + product.id).pipe(
@@ -71,54 +105,6 @@ export class CartService {
     )
   }
 
-
-  // addToCart(product: any) {
-  //   //   return this.http.post<BaseResponse<any[]>>(environment.baseUrl + "/carts/additem/",
-  //   //   {
-  //   //     "productId" : product.id,
-  //   //     "quantity" : product.quantity,
-  //   //     "cartId" : 1,
-  //   //     "productPrice" : product.price
-  //   // }
-  //   // )
-
-
-  //   // for(let i in this.cartItemList){
-  //   //   if(this.cartItemList[i].id === product.id){
-  //   //     this.cartItemList[i].quantity++
-
-  //   //   }
-  //   //   else{
-  //   this.cartItemList.push(product)
-  //   this.productList.next(this.cartItemList)
-  //   this.getTotalPrice()
-  //   console.log(this.cartItemList)
-  // }
-  // //   }
-  // // }
-
-  // // }
-
-  // getTotalPrice(): number {
-  //   let grandTotal = 0;
-  //   this.cartItemList.map((a: any) => {
-  //     grandTotal += a.total;
-  //   })
-  //   return grandTotal;
-  // }
-
-  // removeCartItem(product: any) {
-  //   this.cartItemList.map((a: any, index: any) => {
-  //     if (product.id === a.id) {
-  //       this.cartItemList.splice(index, 1)
-  //     }
-  //   })
-  // }
-
-  // removeAllCart() {
-  //   this.cartItemList = []
-  //   this.productList.next(this.cartItemList)
-  // }
 
 
 }

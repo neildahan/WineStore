@@ -1,5 +1,5 @@
 <div class="container">
-<app-orderlist class="order-list"></app-orderlist>
-<app-orderform class="order-form"></app-orderform>
-
+<app-orderlist [totalPrice]="totalPrice$ | async" [cartItems]="cartItems$ | async" class="order-list"></app-orderlist>
+<app-orderform [totalPrice]="totalPrice$ | async" [cartItems]="cartItems$ | async" class="order-list" class="order-form"></app-orderform>
+<!-- <app-order-success></app-order-success> -->
 </div>

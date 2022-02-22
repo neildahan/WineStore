@@ -4,11 +4,13 @@ const { sessionService } = require('./../services/sessionService');
 const { Response } = require('../helpers/response');
 const { authenticated } = require('../helpers/authenticated');
 
-router.use(authenticated);
 
 router.get('/', async (req, res) => {
     try {
-        const user = sessionService.getUser(req)
+        // const user = sessionService.getUser(req)
+        const user = req.session.user
+        console.log("check" + user.id)
+        console.log("check2222" + sessionService.getUser(req))
         const orders = await ordersService.getOrderHistory(user.id);
         res.send(orders);
     } catch (err) {
@@ -18,7 +20,9 @@ router.get('/', async (req, res) => {
 
 router.get('/last', async (req, res) => {
     try {
-        const user = sessionService.getUser(req)
+        const user = req.session.user
+        console.log("222232323LLLL" + user.id)
+         console.log("this is shit" + sessionService.getUser(req).id)
         const orders = await ordersService.getLastOrder(user.id);
         res.send(orders);
     } catch (err) {
@@ -46,12 +50,13 @@ router.post('/availabledates', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const {  cartId, totalPrice, city, street, deliveryDate, orderDate, creditCard } = req.body;
-        const user = sessionService.getUser(req)
+        const userId = req.session.user.id
+        console.log("lellelele" + userId)
         if (!totalPrice || !city || !street || !deliveryDate || !orderDate || !creditCard || !cartId) {
             return res.status(400).send({ err: true, msg: "Please Fill in all Fields" });
         }
 
-        await ordersService.createNewOrder(user.id, cartId, totalPrice, city, street, deliveryDate, orderDate, creditCard);
+        await ordersService.createNewOrder(userId, cartId, totalPrice, city, street, deliveryDate, orderDate, creditCard);
 
         res.status(201).send(new Response("Order added Successfully", true));
 

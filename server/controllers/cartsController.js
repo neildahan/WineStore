@@ -38,12 +38,12 @@ router.post('/additem', async (req, res) => {
 
 router.put('/quantity', async (req, res) => {
     try {
-        const { quantity, cartItemId, productPrice } = req.body;
-        if ( !quantity || !cartItemId || !productPrice ) {
+        const { quantity, cartItemId, totalPrice } = req.body;
+        if ( !quantity || !cartItemId || !totalPrice ) {
             return res.status(400).send({ err: true, msg: "Please Fill in all Fields" });
         }
 
-        await cartsService.updateCartItemQuantity(quantity, cartItemId, productPrice);
+        await cartsService.updateCartItemQuantity(quantity, cartItemId, totalPrice);
 
         res.status(201).send(new Response("Cart Item updated Successfully", true));
 

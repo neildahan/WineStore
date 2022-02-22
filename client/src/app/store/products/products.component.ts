@@ -28,9 +28,6 @@ user$  = this.authService.user$ ;
 searchKey:string = "";
 selectedCategoryId = ""
 
-
-
-
   constructor(private cartService:CartService, private authService:AuthenticationService) { }
 
   ngOnInit(): void {
