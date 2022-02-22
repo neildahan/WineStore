@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Cart } from 'src/app/models/cart-interface';
-import { CartService } from 'src/app/services/cart.service';
+
+
 
 @Component({
   selector: 'app-orderlist',
@@ -8,6 +9,8 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./orderlist.component.css']
 })
 export class OrderlistComponent implements OnInit {
+
+  searchQuery: string = '';
 
 
   @Input() cart?: Cart | null;
@@ -18,5 +21,6 @@ export class OrderlistComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
 
 }

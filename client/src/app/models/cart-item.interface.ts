@@ -20,6 +20,7 @@ export class CartItem {
         this.cartId = cartId;
         this.quantity = quantity;
         this.imgUrl = product.imgUrl;
+        this.price = product.price;
         this.totalPrice = product.price * this.quantity;
     }
 }

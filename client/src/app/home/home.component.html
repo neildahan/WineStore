@@ -2,10 +2,17 @@
 <div class="container">
     <div class="sidebar">
     <app-login *ngIf="!(user$ | async)" class="sidebar"></app-login>
-    <div *ngIf="(user$ | async)" class="shopping-buttons">
-        <button  routerLink="/store" mat-raised-button color="warn" class="login-button" type="submit">Start/Resume Shopping</button>
+    <div *ngIf="(user$ | async)as user" class="shopping-buttons">
+        <div class="open-cart">
+       <h2>You Have an Open Cart</h2>
+        <button  routerLink="/store" mat-raised-button color="warn" class="login-button" type="submit">Resume Shopping</button>
+        </div>
+        <div class="open-cart">
+       <h2>Start Shopping</h2>
+        <button  routerLink="/store" mat-raised-button color="warn" class="login-button" type="submit">Start Shopping</button>
+        </div>
     </div>
 </div>
-    <app-homemain class="homemain"></app-homemain>
+    <app-homemain class="homemain"></app-homemain>s
     <app-homeinfo class="homeinfo"></app-homeinfo>
 </div>

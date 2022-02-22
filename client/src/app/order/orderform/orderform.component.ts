@@ -17,7 +17,7 @@ export class OrderformComponent implements OnInit {
     deliveryDate: [],
     creditCard: [],
   });
-
+  isLoading = false
   ngOnInit(): void {}
 
   submitForm() {
@@ -27,4 +27,12 @@ export class OrderformComponent implements OnInit {
   fill(type: "city" | "street") {
     this.orderForm.get(type)?.setValue(this.authService.user?.[type]);
   }
+  toggleLoading() {
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false
+    }, 3000)
+
+  }
+
 }

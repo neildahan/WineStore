@@ -46,19 +46,50 @@ export class CartService {
 
 
   addToCart(product: Product) {
-    console.log(this.cartChange.value)
+    console.log(this.cartChange.value?.products)
     const cartItem = new CartItem(product, this.cartChange.value?.id || 55, 1);
     console.log(cartItem)
     return this.http.post(environment.baseUrl + "/carts/addItem", cartItem).pipe(
-      tap(res => {
-        // if (this.cartChange.value) {
-          // this.cartChange.value.products.push(cartItem)
-          // this.setCart(this.cartChange.value)
-        // }
-      })
+      tap(res => res)
     )
   }
 
+
+  // addToCart(product: Product) {
+// this.cart$.subscribe(
+//   cItems => {
+//     this.cartItems.push(cItems?.products)
+//     console.log(this.cartItems)
+//   })
+//   const cartItem = new CartItem(product, this.cartChange.value?.id || 55, 1);
+//   return this.http.post(environment.baseUrl + "/carts/addItem", cartItem).pipe(
+//     tap(res => res)
+//   )
+// }
+//     console.log(this.cartItems)
+//         for ( let i in this.cartItems){
+//        if(this.cartItems?[i].id == product.id){
+//         this.updateCartItemQty(this.cartItems])
+//        }
+//       else{
+//     const cartItem = new CartItem(product, this.cartChange.value?.id || 55, 1);
+//     return this.http.post(environment.baseUrl + "/carts/addItem", cartItem).pipe(
+//       tap(res => res)
+//       )
+//   }
+// return console.log("")
+// }
+// }
+
+
+
+
+  updateCartItemQty(cartItem: CartItem){
+    let body = {quantity:cartItem.quantity , totalPrice:cartItem.totalPrice, cartItemId:cartItem.id}
+    return this.http.put<any>(environment.baseUrl + "/carts/quantity/",body).pipe(
+      map(res => res)
+    ).subscribe()
+  }
 
   removeFromCart(product: CartItem) {
     return this.http.delete(environment.baseUrl + "/carts/" + product.id).pipe(
@@ -76,7 +107,6 @@ export class CartService {
       map(res => res)
     )
   }
-
 
 
 

@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
             street: user.street
         };
 
-console.log(req.session.user )
+console.log(req.session.user.id )
         res.send(new Response("you logged in successfully", true, user));
     } catch (err) {
         res.status(500).send(err);

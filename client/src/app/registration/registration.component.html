@@ -1,5 +1,5 @@
 <div class="registration-form">
-    <h2>Register a New Account</h2>
+    <h2 class="title" >Register a New Account</h2>
 <mat-stepper labelPosition="bottom" #stepper>
     <mat-step [stepControl]="firstFormGroup">
         <form class="stepDiv" [formGroup]="firstFormGroup">
@@ -21,7 +21,7 @@
                 <input type="password" formControlName="confirmPassword" matInput placeholder="Confirm Your Password">
             </mat-form-field>
             <div>
-                <button [disabled]="firstFormGroup.invalid" mat-button matStepperNext>Next</button>
+                <button [disabled]="firstFormGroup.invalid" mat-raised-button color="warn" matStepperNext>Next</button>
             </div>
         </form>
     </mat-step>
@@ -45,8 +45,8 @@
                 <input formControlName="street" matInput placeholder="Enter Your Street">
             </mat-form-field>
             <div>
-                <button type="button" matStepperPrevious>Back</button>
-                <button type="submit" mat-button>Done</button>
+                <button type="button" mat-raised-button color="danger" matStepperPrevious>Back</button>
+                <button type="submit" mat-raised-button color="warn">Done</button>
             </div>
         </form>
     </mat-step>

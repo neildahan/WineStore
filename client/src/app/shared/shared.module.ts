@@ -11,12 +11,14 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { FilterPipe } from './filter.pipe';
 import {RouterModule} from '@angular/router';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
+import { HighlightPipe } from './highLight.pipe';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FilterPipe
+    FilterPipe,
+    HighlightPipe
   ],
 
   imports: [
@@ -44,7 +46,8 @@ import {MatIcon, MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatCardModule,
     MatTabsModule,
-    FilterPipe
+    FilterPipe,
+    HighlightPipe
   ]
 })
 export class SharedModule { }

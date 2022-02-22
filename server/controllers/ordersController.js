@@ -8,7 +8,10 @@ const { authenticated } = require('../helpers/authenticated');
 
 router.get('/', async (req, res) => {
     try {
-        const user = sessionService.getUser(req)
+        // const user = sessionService.getUser(req)
+        const user = req.session.user
+        console.log("check" + user.id)
+        console.log("check2222" + sessionService.getUser(req))
         const orders = await ordersService.getOrderHistory(user.id);
         res.send(orders);
     } catch (err) {
@@ -18,7 +21,9 @@ router.get('/', async (req, res) => {
 
 router.get('/last', async (req, res) => {
     try {
-        const user = sessionService.getUser(req)
+        const user = req.session.user
+        console.log("222232323LLLL" + user.id)
+         console.log("this is shit" + sessionService.getUser(req).id)
         const orders = await ordersService.getLastOrder(user.id);
         res.send(orders);
     } catch (err) {

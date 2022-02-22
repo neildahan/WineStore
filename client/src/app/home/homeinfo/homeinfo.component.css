@@ -11,4 +11,10 @@
 .statics-numbers{
     color: #AA041C;
     font-weight: 700;
+    font-size: 30px;
+}
+
+
+.small-img{
+    width: 200px;
 }

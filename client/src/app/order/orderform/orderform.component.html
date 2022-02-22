@@ -1,5 +1,5 @@
-<div class="main">
-<h1>Order Form</h1>
+<div class="order-form">
+<h2 class="title">Order Form</h2>
 
 <form class="order-form" [formGroup]="orderForm" (ngSubmit)="submitForm()">
     <ng-template matStepLabel>Step One</ng-template>
@@ -12,15 +12,16 @@
         <input (dblclick)="fill('street')" formControlName="street" matInput placeholder="Enter your Street">
     </mat-form-field>
     <mat-form-field appearance="outline">
-        <mat-label>Shipping Date</mat-label>
-        <input type="date" formControlName="deliveryDate" matInput placeholder="Please Pick a Shipping Date">
+        <mat-label>Delivery Date</mat-label>
+        <input type="date" formControlName="deliveryDate" matInput placeholder="Please Pick a Delivery Date">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Credit Card</mat-label>
         <input type="number" formControlName="creditCard" matInput placeholder="Please Enter your Credit Card">
     </mat-form-field>
     <div>
-        <button  mat-raised-button color="warn">Place Order</button>
+        <button [disabled]="orderForm.invalid" type="submit" mat-raised-button color="warn">Place Order</button>
+        <img *ngIf="isLoading" style="width: 25px" src="https://i.ibb.co/0hBmRQ4/1488.gif" alt="">
     </div>
 </form>
 </div>

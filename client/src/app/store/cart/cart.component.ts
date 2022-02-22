@@ -16,25 +16,15 @@ export class CartComponent implements OnInit {
   searchTerm: string = '';
   @Input() user?: User | null;
   @Input() cart?: Cart | null;
-  @Input() totalPrice?: number | null;
+  @Input() totalPrice?: number | null ;
   @Output() removeItem = new EventEmitter<CartItem>();
 
-
+cartItemQuantity = 0
   user$  = this.authService.user$ ;
-  // public activeCart: any
-  // public cartProducts: any = []
-  // public products: any = []
-  // public grandTotal !: number
   constructor(private cartService: CartService, private authService:AuthenticationService) { }
 
   ngOnInit(): void {
-    // this.cartService.getProducts().subscribe(res=>{
-    //   this.products = res;
-    //   this.grandTotal = this.cartService.getTotalPrice();
-    //   this.cartService.getActiveCart().subscribe(res=>{
-    //     this.activeCart = res});}
-    // )
-    // console.log(this.activeCart)
+
   }
 
   onRemoveItem(item: CartItem) {
@@ -53,4 +43,28 @@ export class CartComponent implements OnInit {
     console.log(this.searchTerm)
     this.cartService.search.next(this.searchTerm)
   }
+
+
+  inc(item: CartItem){
+    item.quantity ++
+    item.totalPrice = item.quantity * item.price
+    if(this.totalPrice){
+    this.totalPrice = item.price + this.totalPrice}
+this.cartService.updateCartItemQty(item)
+  }
+
+  dec(item: CartItem){
+    if(item.quantity > 1){
+      item.quantity --
+    item.totalPrice = item.quantity * item.price
+    if(this.totalPrice){
+    this.totalPrice = this.totalPrice - item.price }
+    this.cartService.updateCartItemQty(item)
+  }
+else if(item.quantity <= 1){
+  console.log('no product to decrease')
+  this.onRemoveItem(item)
+}
+}
+
 }

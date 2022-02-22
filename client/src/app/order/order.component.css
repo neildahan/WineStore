@@ -15,4 +15,6 @@
   .order-list {
     grid-area: order-list;
     background-color: #F7F7F7;
+    height: 85vh;
   }
+
