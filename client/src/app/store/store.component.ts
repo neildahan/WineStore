@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { map, Observable, switchMap, take } from 'rxjs';
 import { CartItem } from '../models/cart-item.interface';
 import { Category } from '../models/category-interface';
@@ -21,7 +22,8 @@ export class StoreComponent implements OnInit {
   totalPrice$?: Observable<number | undefined>;
   user$  = this.authService.user$ ;
 
-  constructor(private categoriesService: CategoriesService, private productService: ProductService, private cartService: CartService,private authService:AuthenticationService) { }
+  constructor(private categoriesService: CategoriesService, private productService: ProductService, private cartService: CartService,private authService:AuthenticationService,
+    private activeRoute: ActivatedRoute) { }
 
   // ngOnDestroy(): void {
   //   throw new Error('Method not implemented.');

@@ -7,6 +7,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
 import { StoreRoutingModule } from './store-routing.moudle';
 import { MatIconModule } from '@angular/material/icon';
+import { ProductFormComponent } from './product-form/product-form.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MatIconModule } from '@angular/material/icon';
     StoreComponent,
     CartComponent,
     CategoriesComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductFormComponent
   ],
   imports: [
     CommonModule,

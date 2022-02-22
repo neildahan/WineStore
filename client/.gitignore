@@ -49,3 +49,4 @@ Thumbs.db
 
 # Webstorm
 .idea
+client/.angular

@@ -8,9 +8,11 @@ const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "home", loadChildren: () => import("./home/home.module").then((m) => m.HomeModule) },
   { path: "store", loadChildren: () => import("./store/store.module").then((m) => m.StoreModule), canActivate: [AuthGuard] },
+  { path: "store/:productId", loadChildren: () => import("./store/store.module").then((m) => m.StoreModule), canActivate: [AuthGuard] },
   { path: "order", loadChildren: () => import("./order/order.module").then((m) => m.OrderModule), canActivate: [AuthGuard]},
   { path: "registration", component: RegistrationComponent },
   { path: "thank-you", component: OrderSuccessComponent },
+
 ];
 
 @NgModule({

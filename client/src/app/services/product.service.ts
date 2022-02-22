@@ -33,10 +33,18 @@ export class ProductService {
       }))
   }
 
-
   setProducts(products: Product[]) {
     this.productsChange.next(products)
 
+  }
+
+  
+  addNewProduct(product: Product) {
+    console.log(product)
+    return this.http.post(environment.baseUrl + "/products/", product).pipe(
+      map(res => {
+       return console.log(res)
+      }))
   }
 
 
