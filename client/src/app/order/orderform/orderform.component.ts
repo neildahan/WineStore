@@ -1,58 +1,38 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { CartItem } from 'src/app/models/cart-item.interface';
-import { OrderService } from 'src/app/services/order.service';
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { FormBuilder } from "@angular/forms";
+import { AuthenticationService } from "src/app/services/authentication.service";
 
 @Component({
-  selector: 'app-orderform',
-  templateUrl: './orderform.component.html',
-  styleUrls: ['./orderform.component.css']
+  selector: "app-orderform",
+  templateUrl: "./orderform.component.html",
+  styleUrls: ["./orderform.component.css"],
 })
 export class OrderformComponent implements OnInit {
+  @Output() onSubmit = new EventEmitter();
+  constructor(private fb: FormBuilder, private authService: AuthenticationService) {}
 
-  orderForm!: FormGroup
-  @Input() cartItems?: CartItem[] | any;
-  @Input() totalPrice?: number | null;
+  orderForm = this.fb.group({
+    city: [],
+    street: [],
+    deliveryDate: [],
+    creditCard: [],
+  });
   isLoading = false
+  ngOnInit(): void {}
 
-
-  constructor(private _formBuilder: FormBuilder, private orderService: OrderService,
-    private router: Router) { }
-
-  ngOnInit(): void {
-    this.orderForm = this._formBuilder.group({
-      city: ['', [Validators.required,]],
-      street: ['', Validators.required],
-      deliveryDate: ['', Validators.required],
-      creditCard: ['', Validators.required],
-    });
+  submitForm() {
+    this.onSubmit.emit(this.orderForm.value);
   }
 
-  onSubmit() {
-    this.toggleLoading()
-    const formValue = {
-      ...this.orderForm.value,
-      orderDate: '2019-12-31',
-      cartId: this.cartItems.id,
-      totalPrice: this.totalPrice,
-    }
-    // this.orderService.addNewOrder(formValue).subscribe()
-    console.log(formValue)
-    this.orderService.createNewOrder(formValue).subscribe()
-    setTimeout(() => {
-      this.router.navigate(['thank-you'], { queryParams: { registered: 'true' } });
-    }, 3000)
-   
+  fill(type: "city" | "street") {
+    this.orderForm.get(type)?.setValue(this.authService.user?.[type]);
   }
-
-  toggleLoading = () => {
+  toggleLoading() {
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false
     }, 3000)
 
   }
-
 
 }

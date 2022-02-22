@@ -1,15 +1,15 @@
 <div class="order-form">
 <h2 class="title">Order Form</h2>
 
-<form (ngSubmit)="onSubmit()" [formGroup]="orderForm" class="order-form">
+<form class="order-form" [formGroup]="orderForm" (ngSubmit)="submitForm()">
     <ng-template matStepLabel>Step One</ng-template>
     <mat-form-field appearance="outline">
         <mat-label>City</mat-label>
-        <input formControlName="city" matInput placeholder="Enter Your City">
+        <input (dblclick)="fill('city')" formControlName="city" matInput placeholder="Enter Your City">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Street</mat-label>
-        <input formControlName="street" matInput placeholder="Enter your Street">
+        <input (dblclick)="fill('street')" formControlName="street" matInput placeholder="Enter your Street">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Delivery Date</mat-label>

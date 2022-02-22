@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CartItem } from 'src/app/models/cart-item.interface';
-import { CartService } from 'src/app/services/cart.service';
+import { Cart } from 'src/app/models/cart-interface';
 
 
 
@@ -12,17 +11,15 @@ import { CartService } from 'src/app/services/cart.service';
 export class OrderlistComponent implements OnInit {
 
   searchQuery: string = '';
-  @Input() cartItems?: CartItem[] | any ;
+
+
+  @Input() cart?: Cart | null;
   @Input() totalPrice?: number | null;
 
-
-
-
-  constructor(private cartService: CartService) { }
+  constructor() { }
 
   ngOnInit(): void {
 
-    console.log(this.cartService.cart$.subscribe(c => console.log(c?.products)))
   }
 
 

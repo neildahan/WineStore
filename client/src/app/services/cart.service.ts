@@ -18,9 +18,13 @@ export class CartService {
   private cartChange = new BehaviorSubject<Cart | null>(null)
   public search = new BehaviorSubject<string>("")
   cart$ = this.cartChange.asObservable()
-cartItems :any[] = []
+  totalPrice$ = this.cart$.pipe(
+    map((cart) => cart?.products.map((product) => product.totalPrice).reduce((a: number, b: number) => a + b, 0))
+  );
 
-
+  get cart() {
+    return this.cartChange.value
+  }
   constructor(private http: HttpClient, private productService: ProductService) { }
 
 
@@ -42,7 +46,6 @@ cartItems :any[] = []
 
 
   addToCart(product: Product) {
-    console.log(this.cartItems)
     console.log(this.cartChange.value?.products)
     const cartItem = new CartItem(product, this.cartChange.value?.id || 55, 1);
     console.log(cartItem)
