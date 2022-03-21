@@ -47,5 +47,20 @@ export class ProductService {
       }))
   }
 
+  updateProduct(product: Product) {
+    console.log(product)
+    return this.http.put(environment.baseUrl + "/products/edit/" + product.id, product).pipe(
+      map(res => {
+       return console.log(res)
+      }))
+  }
+
+  getProductById(productId: number){
+    return this.http.get<BaseResponse<Product>>(environment.baseUrl + "/products/" + productId).pipe(
+      map((res) => res.data)
+
+    )
+
+  }
 
 }

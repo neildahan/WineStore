@@ -19,7 +19,10 @@ export class CartService {
   public search = new BehaviorSubject<string>("")
   cart$ = this.cartChange.asObservable()
   totalPrice$ = this.cart$.pipe(
-    map((cart) => cart?.products.map((product) => product.totalPrice).reduce((a: number, b: number) => a + b, 0))
+    map((cart) => cart?.products.map((product) => product).map((a: CartItem) => {
+      a.totalPrice = a.quantity * (a.price || 0);
+     return a
+    }).map(p => p.totalPrice).reduce((a, b) => a + b, 0))
   );
 
   get cart() {
@@ -88,7 +91,7 @@ export class CartService {
     let body = {quantity:cartItem.quantity , totalPrice:cartItem.totalPrice, cartItemId:cartItem.id}
     return this.http.put<any>(environment.baseUrl + "/carts/quantity/",body).pipe(
       map(res => res)
-    ).subscribe()
+    )
   }
 
   removeFromCart(product: CartItem) {

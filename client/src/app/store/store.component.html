@@ -5,11 +5,11 @@
         [categories]="categories$ | async" class="categories"></app-categories>
         <app-products [user]="(user$ | async)" (productSelected)="addToCart($event)" [products]="products$ | async"  [categories]="categories$ | async" class="products"></app-products>
     </div>
-    <!-- <app-cart 
+    <app-cart *ngIf="(user$ | async)?.role == 'user'"
     [user]="(user$ | async)"
     (removeItem)="removeFromCart($event)"
     [totalPrice]="totalPrice$ | async"
-    [cart]="(cart$ | async)" class="cart"></app-cart> -->
+    [cart]="(cart$ | async)" class="cart"></app-cart>
 
-    <app-product-form class="product-form "></app-product-form>
+    <app-product-form *ngIf="(user$ | async)?.role == 'admin'" class="product-form"></app-product-form>
 </div>

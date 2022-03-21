@@ -1,6 +1,7 @@
-<div class="product-form">
+<div *ngIf="productForm" class="product-form">
+
     <h2 class="title">Product Form</h2>
-    
+
     <form (ngSubmit)="onSubmit()" [formGroup]="productForm" class="order-form">
         <ng-template matStepLabel>Step One</ng-template>
         <mat-form-field appearance="outline">
@@ -20,7 +21,7 @@
             <input  formControlName="imgUrl" matInput placeholder="Enter Image Url">
         </mat-form-field>
         <div>
-            <button  [disabled]="productForm.invalid" type="submit" mat-raised-button color="warn">Add Product</button>
+            <button  [disabled]="productForm.invalid" type="submit" mat-raised-button color="warn">Save</button>
         </div>
     </form>
     </div>

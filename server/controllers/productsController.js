@@ -38,7 +38,7 @@ router.get('/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const results = await productsService.getProductById(id) ;
-        res.send(results);
+        res.send(new Response ("product",true,results[0]));
 
     } catch (err) {
         res.status(500).send(err);

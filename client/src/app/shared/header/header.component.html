@@ -4,7 +4,9 @@
 </a>
     <div class="user-menu" *ngIf="(user$ | async) as user">
         <p class="greeting-text">Hello, {{ user.firstName }} {{ user.lastName }}</p>
+        <button *ngIf="user.role == 'admin'" [routerLink]="['/store']"   mat-raised-button color="warn" >Add New Product</button>
         <button [routerLink]="['/home']"  (click)="logout()" mat-raised-button color="warn" >Logout</button>
+        
     </div>
     
 </mat-toolbar>

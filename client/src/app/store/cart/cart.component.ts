@@ -47,19 +47,19 @@ cartItemQuantity = 0
 
   inc(item: CartItem){
     item.quantity ++
-    item.totalPrice = item.quantity * item.price
+    item.totalPrice = item.quantity * (item.price|| 0)
     if(this.totalPrice){
-    this.totalPrice = item.price + this.totalPrice}
-this.cartService.updateCartItemQty(item)
+    this.totalPrice = (item.price || 0) + this.totalPrice}
+this.cartService.updateCartItemQty(item).subscribe()
   }
 
   dec(item: CartItem){
     if(item.quantity > 1){
       item.quantity --
-    item.totalPrice = item.quantity * item.price
+    item.totalPrice = item.quantity * (item.price || 0)
     if(this.totalPrice){
-    this.totalPrice = this.totalPrice - item.price }
-    this.cartService.updateCartItemQty(item)
+    this.totalPrice = this.totalPrice - (item.price || 0)}
+    this.cartService.updateCartItemQty(item).subscribe()
   }
 else if(item.quantity <= 1){
   console.log('no product to decrease')

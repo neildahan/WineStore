@@ -13,10 +13,9 @@
                 <img class="product-image" mat-card-image src={{product.imgUrl}} alt="">
                 <h2>${{product.price}}.00</h2>
                 <mat-card-actions>
-                  <button (click)="onProductSelected(product)" mat-button class = "add-button">Add to Cart</button>
+                  <button *ngIf="(user$ | async)?.role === 'user'" (click)="onProductSelected(product)" mat-button class = "add-button">Add to Cart</button>
                   <div class="user-menu" *ngIf="(user$ | async) as user">
-                 
-                  <button class="edit-button" *ngIf="user.role === 'user'" mat-button>
+                  <button [routerLink]='"/store/" + product.id' class="edit-button" *ngIf="user.role === 'admin'" mat-button>
                     <mat-icon>edit</mat-icon>
                     Edit Product
                 </button>

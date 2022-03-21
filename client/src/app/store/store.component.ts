@@ -30,6 +30,7 @@ export class StoreComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+  
     this.categoriesService.getCategories().pipe(take(1)).subscribe();
 
     this.categoriesService.currentCategory$
@@ -48,13 +49,28 @@ export class StoreComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    this.cartService
+    console.log(this.cartService.cart?.products)
+    console.log(product);
+    
+    const _product = this.cartService.cart?.products.find(p => p.productId == product.id)
+    console.log(_product)
+    if (_product) {
+      _product.quantity +=1;
+      this.cartService.updateCartItemQty(_product).pipe(
+        switchMap(() => this.cartService.getCart(this.authService.user?.id))
+      ).subscribe()
+      
+    } else {
+
+      this.cartService
       .addToCart(product)
       .pipe(
         take(1),
         switchMap(() => this.cartService.getCart(this.authService.user?.id))
       )
       .subscribe();
+    }
+
   }
 
   removeFromCart(product: CartItem) {
